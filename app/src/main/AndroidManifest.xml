@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.hardware.type.automotive" android:required="true" />
+
+    <!-- 표준 AAOS: 속도(PERF_VEHICLE_SPEED), 기어(GEAR_SELECTION). Pleos FAQ 가 안내하는 경로 -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+
+    <!-- Pleos Vehicle SDK (권한 이름: Pleos 공식 Vehicle 샘플 매니페스트) -->
+    <uses-permission android:name="pleos.car.permission.CAR_DRIVE" />          <!-- Brake 페달 -->
+    <uses-permission android:name="pleos.car.permission.READ_CAR_STEERING" />  <!-- SteeringWheel 각도 -->
+    <uses-permission android:name="pleos.car.permission.CAR_LIGHTS" />         <!-- TurnSignal -->
+    <uses-permission android:name="pleos.car.permission.CAR_DOORS" />          <!-- 연결 확인(Door) -->
+
+    <!-- Pleos FusedLocation: 위치 + 근접 알림 (공식 FusedLocation 샘플) -->
+    <uses-permission android:name="pleos.car.permission.FUSED_LOCATION" />
+    <!-- Pleos TextToSpeech / SpeechToText -->
+    <uses-permission android:name="pleos.car.permission.TTS_SERVICE" />
+    <uses-permission android:name="pleos.car.permission.STT_SERVICE" />
+    <!-- 내비 경로 안내 상태 (경로 재탐색 = 길을 놓침). Pleos 공식 navi 샘플과 같은 권한 -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
+
+    <!-- Pleos 가 없을 때의 대체 위치와 음성 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- 내비를 앞에 띄워 둔 채로도 계속 지켜보기 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <queries>
+        <intent><action android:name="android.intent.action.TTS_SERVICE" /></intent>
+        <intent><action android:name="android.speech.RecognitionService" /></intent>
+    </queries>
+
+    <application
+        android:name=".ThatSpotApp"
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- 주행 중에도 화면을 유지한다. 주행 중에는 버튼 없이 거리와 이름만 그린다 (MainActivity). -->
+            <meta-data android:name="distractionOptimized" android:value="true" />
+        </activity>
+
+        <service
+            android:name=".service.DriveWatchService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+    </application>
+</manifest>

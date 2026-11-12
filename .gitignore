@@ -1,0 +1,12 @@
+# Project exclude paths
+/.gradle/
+/app/build/
+/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/
+/app/build/intermediates/javac/debugAndroidTest/compileDebugAndroidTestJavaWithJavac/classes/
+*.log
+hs_err_pid*
+replay_pid*
+app/release/
+
+.idea/
+local.properties
