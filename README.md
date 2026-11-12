@@ -147,25 +147,3 @@ apk/                 제출용 APK
 ```
 
 테스트는 `./gradlew test`로 돌립니다. 시연 시나리오 전체를 엔진에 넣어서 알림 시점, 방향 구분, 조용해지는 조건, 길 놓침 기록 위치 등을 확인합니다.
-
-## 개인정보
-
-급정거와 길을 놓친 순간의 시각, 위치, 속도, 그리고 지점 정보만 기기 안에 저장합니다. 전체 주행 경로와 음성은 저장하지 않고, 서버로 보내는 것도 없습니다. 지점은 홈 화면에서 하나씩 지울 수 있습니다.
-
-## 한계
-
-- 급정거가 내 부주의 때문인지 위험한 자리라서인지 앱은 알 수 없습니다. 그래서 두 번째부터 알리고, 이유는 운전자에게 묻습니다.
-- 길을 놓친 곳은 내비로 길 안내를 받을 때만 기록됩니다.
-- 에뮬레이터에 Pleos 한국어 음성 엔진이 있는지는 확인하지 못했습니다. 없으면 안드로이드 기본 음성을 씁니다.
-- 지도 화면은 없습니다. 주차 화면의 경로는 선으로 그린 스케치입니다.
-
-## 빌드가 안 될 때
-
-`mergeExtDexDebug`에서 `NullPointerException`이 나면 Gradle 캐시가 깨진 경우입니다. Android Studio를 닫고 PowerShell에서 실행하세요.
-
-```
-Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\caches\transforms-*"
-Remove-Item -Recurse -Force .\app\build, .\.gradle
-```
-
-그래도 안 되면 `gradle.properties`에서 `useNavi=false`로 두세요. 길 놓침 기능만 빠집니다.
