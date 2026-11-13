@@ -1,3 +1,3 @@
 # APK
 
-제출용 release APK: `Spider_ThatSpot_release.apk`
+제출용 release APK: `CP0_ThatSpot_release.apk`
