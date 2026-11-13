@@ -3,7 +3,7 @@
 자주 다니는 길에서 급정거했던 곳, 길을 놓쳤던 갈림길을 기억해 뒀다가 다음에 그 근처에 가면 미리 말로 알려 주는 Pleos Connect 앱입니다.
 
 - 팀: Spider
-- APK: [`apk/Spider_ThatSpot_release.apk`](apk/Spider_ThatSpot_release.apk)
+- APK: [`apk/CP0_ThatSpot_release.apk`](apk/Spider_ThatSpot_release.apk)
 
 ## 만든 이유
 
@@ -102,7 +102,7 @@ Logcat에서 아래 태그로 검색합니다. 홈 화면 오른쪽 센서 목�
 
 ## APK 위치
 
-`apk/Spider_ThatSpot_release.apk` 입니다. 서명한 release 빌드이고, Android Studio의 **Build > Generate Signed App Bundle or APK > APK > release**로 만들었습니다.
+`apk/CP0_ThatSpot_release.apk` 입니다. 서명한 release 빌드이고, Android Studio의 **Build > Generate Signed App Bundle or APK > APK > release**로 만들었습니다.
 
 ## 사용한 Pleos SDK
 
